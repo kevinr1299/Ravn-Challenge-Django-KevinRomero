@@ -21,6 +21,7 @@ class Person(models.Model):
     gender = models.ForeignKey('Gender', on_delete=models.PROTECT)
     species = models.ManyToManyField('Specie')
     homeworld = models.ForeignKey('World', on_delete=models.PROTECT)
+    vehicles = models.ManyToManyField('Vehicle')
 
     class Meta:
         verbose_name_plural = 'People'
