@@ -1,6 +1,6 @@
-from starwars.utils.serializers import GenerateModelSerializer
+from starwars.utils.serializers import get_serializer_from_model
 
 from starwars.vehicles.models import Vehicle
 
 
-VehicleSerializer = GenerateModelSerializer(Vehicle, 'vehicles:vehicle')
+VehicleSerializer = get_serializer_from_model(Vehicle, 'vehicles:vehicle')

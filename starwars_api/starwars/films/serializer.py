@@ -1,5 +1,5 @@
-from starwars.utils.serializers import GenerateModelSerializer
+from starwars.utils.serializers import get_serializer_from_model
 
 from starwars.films.models import Film
 
-FilmSerializer = GenerateModelSerializer(Film, 'films:film')
+FilmSerializer = get_serializer_from_model(Film, 'films:film')

@@ -6,21 +6,21 @@ from starwars.people.models.catalogues import (
     Specie,
     World,
 )
-from starwars.utils.serializers import GenerateModelSerializer
+from starwars.utils.serializers import get_serializer_from_model
 
 
-EyeColorSerializer = GenerateModelSerializer(
+EyeColorSerializer = get_serializer_from_model(
     EyeColor,
     'catalogues:eye_color',
 )
-GenderSerializer = GenerateModelSerializer(Gender, 'catalogues:gender')
-HairColorSerializer = GenerateModelSerializer(
+GenderSerializer = get_serializer_from_model(Gender, 'catalogues:gender')
+HairColorSerializer = get_serializer_from_model(
     HairColor,
     'catalogues:hair_color',
 )
-SkinColorSerializer = GenerateModelSerializer(
+SkinColorSerializer = get_serializer_from_model(
     SkinColor,
     'catalogues:skin_color',
 )
-SpecieSerializer = GenerateModelSerializer(Specie, 'catalogues:specie')
-WorldSerializer = GenerateModelSerializer(World, 'catalogues:world')
+SpecieSerializer = get_serializer_from_model(Specie, 'catalogues:specie')
+WorldSerializer = get_serializer_from_model(World, 'catalogues:world')

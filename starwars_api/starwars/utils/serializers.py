@@ -12,7 +12,7 @@ class NameRelatedField(serializers.SlugRelatedField):
         super().__init__(slug_field=slug_field, read_only=True, **kwargs)
 
 
-def GenerateModelSerializer(
+def get_serializer_from_model(
     meta_model: Model,
     view_name: str,
 ) -> serializers.ModelSerializer:

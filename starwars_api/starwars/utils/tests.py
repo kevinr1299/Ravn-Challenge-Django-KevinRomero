@@ -8,7 +8,7 @@ from rest_framework import serializers
 from starwars.utils.models import PrintShowsName
 from starwars.utils.serializers import (
     NameRelatedField,
-    GenerateModelSerializer,
+    get_serializer_from_model,
 )
 
 fake = Faker()
@@ -40,7 +40,7 @@ class TestUtils(TestCase):
 
     def test_serializer_generation(self):
         mock = Mock(spec=models.Model)
-        serializer_class = GenerateModelSerializer(mock, 'test')
+        serializer_class = get_serializer_from_model(mock, 'test')
         self.assertTrue(
             issubclass(
                 serializer_class,
