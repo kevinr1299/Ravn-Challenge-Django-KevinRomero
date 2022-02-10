@@ -1,31 +1,33 @@
 from django.db import models
 
-
-class HairColor(models.Model):
-
-    name = models.CharField(max_length=50)
+from starwars.utils.models import PrintShowsName
 
 
-class SkinColor(models.Model):
+class HairColor(PrintShowsName, models.Model):
 
     name = models.CharField(max_length=50)
 
 
-class EyeColor(models.Model):
+class SkinColor(PrintShowsName, models.Model):
 
     name = models.CharField(max_length=50)
 
 
-class Gender(models.Model):
+class EyeColor(PrintShowsName, models.Model):
 
     name = models.CharField(max_length=50)
 
 
-class Specie(models.Model):
+class Gender(PrintShowsName, models.Model):
 
     name = models.CharField(max_length=50)
 
 
-class World(models.Model):
+class Specie(PrintShowsName, models.Model):
+
+    name = models.CharField(max_length=50)
+
+
+class World(PrintShowsName, models.Model):
 
     name = models.CharField(max_length=50)
