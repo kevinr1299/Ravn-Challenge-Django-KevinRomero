@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.generics import RetrieveAPIView
 
-# Create your views here.
+from starwars.films.models import Film
+from starwars.films.serializer import FilmSerializer
+
+
+class FilmRetrieveView(RetrieveAPIView):
+
+    queryset = Film.objects.all()
+    serializer_class = FilmSerializer
