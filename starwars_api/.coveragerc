@@ -1,0 +1,6 @@
+[run]
+omit = 
+    starwars/wsgi.py
+    **/migrations/*
+    **/tests/*
+    **/tests.py
