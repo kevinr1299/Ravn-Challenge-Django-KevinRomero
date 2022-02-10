@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from starwars.films.models import Film
+
+
+admin.site.register(Film)
