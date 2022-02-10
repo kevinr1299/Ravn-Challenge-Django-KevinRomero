@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from starwars.vehicles.models import Vehicle
+
+
+admin.site.register(Vehicle)
