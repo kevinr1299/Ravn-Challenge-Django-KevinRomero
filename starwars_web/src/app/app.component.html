@@ -1,9 +1,8 @@
-<div fxLayout="row" fxFlexFill>
-    <div fxLayout="column" fxFlexFill>
-        <app-header-bar fxLayout="row"></app-header-bar>
-        <div fxLayout="row" fxFlexFill>
-            <app-side-bar fxLayout="column" fxFlex="30"></app-side-bar>
-            <router-outlet fxLayout="column" fxFlex="70"></router-outlet>
-        </div>
+<app-header-bar fxLayout="row" ></app-header-bar>
+<div fxLayout="row" class="row_content">
+    <app-side-bar fxLayout="column" fxFlex="20"></app-side-bar>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div fxLayout="column" fxFlex="80">
+        <router-outlet></router-outlet>
     </div>
 </div>
