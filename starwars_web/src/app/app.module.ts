@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/material.module';
+import { HeaderBarComponent } from './components/template/header-bar/header-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderBarComponent,
   ],
   imports: [
     BrowserModule,
