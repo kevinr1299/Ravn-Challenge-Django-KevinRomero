@@ -39,10 +39,10 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 h2 {
   font-size: 17pt;
-  color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 1);
 }
-h2.low_emphasis {
-  font-size: 17pt;
+h3.low_emphasis {
+  font-size: 15pt;
   color: rgba(0, 0, 0, 0.3);
 }
 h2.high_emphasis {
