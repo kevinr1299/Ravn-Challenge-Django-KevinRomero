@@ -5,4 +5,4 @@ from starwars.utils.models import PrintShowsName
 
 class Vehicle(PrintShowsName, models.Model):
 
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
