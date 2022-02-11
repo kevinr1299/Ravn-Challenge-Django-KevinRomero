@@ -1,2 +1,9 @@
-<app-header-bar></app-header-bar>
-<router-outlet></router-outlet>
+<div fxLayout="row" fxFlexFill>
+    <div fxLayout="column" fxFlexFill>
+        <app-header-bar fxLayout="row"></app-header-bar>
+        <div fxLayout="row" fxFlexFill>
+            <app-side-bar fxLayout="column" fxFlex="30"></app-side-bar>
+            <router-outlet fxLayout="column" fxFlex="70"></router-outlet>
+        </div>
+    </div>
+</div>
