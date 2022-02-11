@@ -5,7 +5,10 @@ from django.test import TestCase
 from faker import Faker
 from rest_framework import serializers
 
-from starwars.utils.models import PrintShowsName
+from starwars.utils.models import (
+    PrintShowsName,
+    CatalogueManager,
+)
 from starwars.utils.serializers import (
     NameRelatedField,
     get_serializer_from_model,
@@ -54,3 +57,11 @@ class TestUtils(TestCase):
             field,
             serializers.SlugRelatedField,
         )
+
+
+class TestCatalogueManager(TestCase):
+
+    def test_seed_random(self):
+        with patch('django.db.models.Model'):
+            result = CatalogueManager.seed_random(models.Model, 'model', 10)
+            self.assertIsNotNone(result)
