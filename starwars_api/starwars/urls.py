@@ -14,10 +14,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import RedirectView
 from django.urls import path, include
+
+from starwars.views import schema_view
 
 
 urlpatterns = [
+    path(
+        'docs/',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='docs',
+    ),
     path('admin/', admin.site.urls),
     path('api/people/', include(
         ('starwars.people.urls.person', 'people'),
@@ -35,4 +44,6 @@ urlpatterns = [
         ('starwars.vehicles.urls', 'vehicles'),
         namespace='vehicles',
     )),
+    path('', RedirectView.as_view(pattern_name='docs', permanent=False)),
+    *staticfiles_urlpatterns(),
 ]
