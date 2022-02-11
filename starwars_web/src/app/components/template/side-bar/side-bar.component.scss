@@ -1,13 +1,14 @@
-h2, h3 {
-    margin: 0;
-}
 .side_list {
     margin: 0;
     padding: 0;
     list-style: none;
 }
+.site_list_item {
+    cursor: pointer;
+}
 .side_name{
     margin: 16pt;
+    width: 100%;
 }
 .side_icon {
     justify-content: center;
@@ -16,6 +17,7 @@ h2, h3 {
     height: 17pt;
     width: 17pt;
     font-size: 17pt;
+    margin-right: 16pt;
 }
 .side_divider {
     margin-left: 16pt;
