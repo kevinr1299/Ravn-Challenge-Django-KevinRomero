@@ -1,4 +1,4 @@
-from unittest.mock import Mock
+from unittest.mock import patch
 
 from django.db import models
 from django.test import TestCase
@@ -39,14 +39,14 @@ class TestUtils(TestCase):
         )
 
     def test_serializer_generation(self):
-        mock = Mock(spec=models.Model)
-        serializer_class = get_serializer_from_model(mock, 'test')
-        self.assertTrue(
-            issubclass(
-                serializer_class,
-                serializers.ModelSerializer,
+        with patch('django.db.models.Model'):
+            serializer_class = get_serializer_from_model(models.Model, 'test')
+            self.assertTrue(
+                issubclass(
+                    serializer_class,
+                    serializers.ModelSerializer,
+                )
             )
-        )
 
     def test_slug_override(self):
         field = NameRelatedField()
