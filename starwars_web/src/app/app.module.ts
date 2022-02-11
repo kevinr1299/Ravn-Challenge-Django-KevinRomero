@@ -8,12 +8,14 @@ import { MaterialModule } from 'src/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderBarComponent } from './components/template/header-bar/header-bar.component';
 import { SideBarComponent } from './components/template/side-bar/side-bar.component';
+import { PersonComponent } from './components/page/person/person.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderBarComponent,
     SideBarComponent,
+    PersonComponent,
   ],
   imports: [
     BrowserModule,
