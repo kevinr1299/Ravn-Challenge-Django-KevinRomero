@@ -27,3 +27,4 @@ class Person(PrintShowsName, models.Model):
 
     class Meta:
         verbose_name_plural = 'People'
+        ordering = ['id']
