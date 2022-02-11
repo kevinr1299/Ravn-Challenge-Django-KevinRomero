@@ -33,6 +33,7 @@ def get_serializer_from_model(
 
         class Meta:
             model = meta_model
+            ref_name = meta_model.objects.model._meta.db_table
             fields = [
                 'name',
                 'url',
