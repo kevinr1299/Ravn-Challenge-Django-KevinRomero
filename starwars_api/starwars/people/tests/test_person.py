@@ -1,4 +1,3 @@
-from multiprocessing import context
 from django.urls import reverse
 from faker import Faker
 from rest_framework import status
