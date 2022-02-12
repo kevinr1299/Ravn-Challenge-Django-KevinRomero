@@ -22,16 +22,28 @@ class PersonAdmin(admin.ModelAdmin):
         'skin_color',
         'eye_color',
         'gender',
-        'species',
+        'specie',
         'homeworld',
         'vehicles',
     )
+
+
+class GenderAdmin(admin.ModelAdmin):
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(HairColor)
 admin.site.register(SkinColor)
 admin.site.register(EyeColor)
-admin.site.register(Gender)
+admin.site.register(Gender, GenderAdmin)
 admin.site.register(Specie)
 admin.site.register(World)
