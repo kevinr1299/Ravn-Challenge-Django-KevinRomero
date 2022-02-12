@@ -51,9 +51,9 @@ class TestPeopleModel(APITestCase):
             hair_color=self.hair_color,
             skin_color=self.skin_color,
             gender=self.gender,
+            specie=self.specie,
             homeworld=self.world,
         )
-        self.person.species.add(self.specie)
 
     def test_set_creation_date(self):
         self.assertIsNotNone(
@@ -95,11 +95,11 @@ class TestPeopleModel(APITestCase):
                 'pk': self.world.id
             })
         )
-        self.assertIn(
+        self.assertEqual(
             reverse('catalogues:specie', kwargs={
                 'pk': self.specie.id,
             }),
-            serializer.data['species'],
+            serializer.data['specie'],
         )
 
     def test_retrieve_person(self):
