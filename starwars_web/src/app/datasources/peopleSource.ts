@@ -5,15 +5,21 @@ import { Person } from 'src/app/interfaces/people';
 import { PersonService } from 'src/app/services/person.service';
 
 export class PeopleSource extends DataSource<Person | undefined> {
+
+    hasError: Boolean = false;
+    isLoading: Boolean = true;
     private _pageSize = 5;
     private _cachedData = Array.from<Person>([]);
     private _fetchedPages = new Set<number>();
-    private _max = 0;
-    private _current = this._pageSize;
+    private _next: any;
+    private _current = 0;
+    private _last_end = 0;
     private readonly _dataStream = new BehaviorSubject<(Person | undefined)[]>(this._cachedData);
     private readonly _subscription = new Subscription();
 
-    constructor(private personService: PersonService) {
+    constructor(
+        private personService: PersonService,
+    ) {
         super();
         this.call_api(1);
     }
@@ -21,12 +27,10 @@ export class PeopleSource extends DataSource<Person | undefined> {
     connect(collectionViewer: CollectionViewer): Observable<(Person | undefined)[]> {
         this._subscription.add(
             collectionViewer.viewChange.subscribe(range => {
-                const startPage = this._getPageForIndex(range.start);
-                const endPage = this._getPageForIndex(range.end - 1);
-                if (this._current < this._max) {
-                    for (let i = startPage; i <= endPage; i++) {
-                        this._fetchPage(i + 2);
-                    }
+                const endPage = this._getPageForIndex(range.end);
+                if (this._last_end < endPage) {
+                    this._last_end = endPage;
+                    if(this._next != null) this._fetchPage(this._current+1)
                 }
             }),
         );
@@ -38,14 +42,25 @@ export class PeopleSource extends DataSource<Person | undefined> {
     }
 
     private call_api(page: number) {
-        this.personService.getPeople(page).subscribe(
-            response => {
+        this.isLoading = true
+        this.personService.getPeople(page)
+        .subscribe({
+            next: response => {
+                this._current++;
                 this._fetchedPages.add(page);
-                this._cachedData = response.body!.results;
-                this._max = response.body!.count;
+                this._cachedData = this._cachedData.concat(response.body!.results)
+                this._next = response.body!.next;
                 this._dataStream.next(this._cachedData);
+            },
+            error: () => {
+                console.log(0)
+                this.hasError = true;
+                this.disconnect();
+            },
+            complete:  () => {
+                this.isLoading = false;
             }
-        )
+        })
     }
 
     private _getPageForIndex(index: number): number {
@@ -56,17 +71,6 @@ export class PeopleSource extends DataSource<Person | undefined> {
         if (this._fetchedPages.has(page)) {
             return;
         }
-        this._fetchedPages.add(page);
-        this._current += this._pageSize;
-
-        this.personService.getPeople(page).subscribe(
-            (response) => {
-                this._cachedData = this._cachedData.concat(response.body!.results)
-                this._dataStream.next(this._cachedData);
-            },
-            error => {
-                this.disconnect()
-            }
-        )
+        this.call_api(page);
     }
 }
