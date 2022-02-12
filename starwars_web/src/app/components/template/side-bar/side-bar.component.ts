@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
+import { PeopleSource } from 'src/app/datasources/peopleSource';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  providers: [],
+  styleUrls: ['./side-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SideBarComponent implements OnInit {
+export class SideBarComponent {
 
-  constructor() { }
+  dataSource!: PeopleSource;
 
-  ngOnInit(): void {
-  }
-
+  constructor(
+    private personService: PersonService,
+  ) {
+    this.dataSource = new PeopleSource(this.personService);
+   }
 }

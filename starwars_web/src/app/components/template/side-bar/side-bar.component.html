@@ -1,16 +1,8 @@
-<div class="side_list" fxLayout="column">
-    <div fxLayout="row" fxFlexFill>
-        <div fxLayout="column" class="site_list_item" fxFlexFill routerLink="/person">
-            <div fxLayout="row" fxFlexFill>
-                <div class="side_name" fxLayout="column">
-                    <h2>Luck Skywalker</h2>
-                    <p class="low_emphasis">Human from tattoin</p>
-                </div>
-                <div class="side_icon" fxLayout="column">
-                    <mat-icon class="title_icon">arrow_forward_ios</mat-icon>
-                </div>
-            </div>
-            <mat-divider class="side_divider"></mat-divider>
-        </div>
-    </div>
-</div>
+<cdk-virtual-scroll-viewport itemSize="50" class="side_list">
+    <app-person-cell
+        fxLayout="row"
+        *cdkVirtualFor="let person of dataSource"
+        [person]="person"
+    >
+    </app-person-cell>
+</cdk-virtual-scroll-viewport>
