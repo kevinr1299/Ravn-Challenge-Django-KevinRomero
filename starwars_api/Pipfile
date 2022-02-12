@@ -11,10 +11,10 @@ django-cors-headers = "*"
 gunicorn = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+faker = "*"
 
 [dev-packages]
 flake8 = "*"
-faker = "*"
 pytest-django = "*"
 pytest = "*"
 coverage = "*"
