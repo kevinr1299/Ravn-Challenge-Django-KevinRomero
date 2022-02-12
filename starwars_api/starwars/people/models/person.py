@@ -21,7 +21,7 @@ class Person(PrintShowsName, models.Model):
     skin_color = models.ForeignKey('SkinColor', on_delete=models.PROTECT)
     eye_color = models.ForeignKey('EyeColor', on_delete=models.PROTECT)
     gender = models.ForeignKey('Gender', on_delete=models.PROTECT)
-    species = models.ManyToManyField('Specie', blank=True)
+    specie = models.ForeignKey('Specie', on_delete=models.PROTECT)
     homeworld = models.ForeignKey('World', on_delete=models.PROTECT)
     vehicles = models.ManyToManyField(Vehicle, blank=True)
 

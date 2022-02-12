@@ -126,13 +126,14 @@ class Command(BaseCommand):
                     homeworld=world_list[random.randrange(
                         max_record,
                     )],
+                    specie=specie_list[random.randrange(
+                        max_record,
+                    )],
                     gender=gender_list[random.randrange(
                         len(gender_list),
                     )],
                 )
-                person.species.add(specie_list[random.randrange(
-                    max_record,
-                )])
+
                 person.vehicles.add(vehicle_list[random.randrange(
                     max_record,
                 )])
