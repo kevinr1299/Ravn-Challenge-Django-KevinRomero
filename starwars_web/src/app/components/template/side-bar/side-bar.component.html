@@ -3,6 +3,7 @@
         fxLayout="row"
         *cdkVirtualFor="let person of dataSource"
         (click)="changeSelectPerson(person)"
+        [selected]="personSelected == person.url"
         [person]="person"
     >
     </app-person-cell>
