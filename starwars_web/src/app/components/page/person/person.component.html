@@ -2,27 +2,29 @@
     <h2 class="header_information">General Information</h2>
     <div fxLayout="row" class="item_information">
         <h2 class="low_emphasis" fxFlex="80">Eye Color</h2>
-        <h2 class="value_information" fxFlex="20">Blue</h2>
+        <h2 class="value_information" fxFlex="20">{{person?.eye_color}}</h2>
     </div>
     <mat-divider class="divider_information"></mat-divider>
     <div fxLayout="row" class="item_information">
         <h2 class="low_emphasis" fxFlex="80">Hair Color</h2>
-        <h2 class="value_information" fxFlex="20">Blue</h2>
+        <h2 class="value_information" fxFlex="20">{{person?.hair_color}}</h2>
     </div>
     <mat-divider class="divider_information"></mat-divider>
     <div fxLayout="row" class="item_information">
         <h2 class="low_emphasis" fxFlex="80">Skin Color</h2>
-        <h2 class="value_information" fxFlex="20">Blue</h2>
+        <h2 class="value_information" fxFlex="20">{{person?.skin_color}}</h2>
     </div>
     <mat-divider class="divider_information"></mat-divider>
     <div fxLayout="row" class="item_information">
         <h2 class="low_emphasis" fxFlex="80">Birth Year</h2>
-        <h2 class="value_information" fxFlex="20">Blue</h2>
+        <h2 class="value_information" fxFlex="20">{{person?.birth_date | date:'y'}}</h2>
     </div>
     <mat-divider class="divider_information"></mat-divider>
     <h2 class="header_information">Vehicles</h2>
-    <div fxLayout="row" class="item_information">
-        <h2 class="low_emphasis">Avion</h2>
+    <div *ngFor="let vehicle of vehicles">
+        <div fxLayout="row" class="item_information">
+            <h2 class="low_emphasis">{{vehicle}}</h2>
+        </div>
+        <mat-divider class="divider_information"></mat-divider>
     </div>
-    <mat-divider class="divider_information"></mat-divider>
 </div>
