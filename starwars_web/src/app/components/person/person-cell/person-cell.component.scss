@@ -17,3 +17,7 @@
 .side_divider {
     margin-left: 16pt;
 }
+
+.selected_cell {
+    background-color: rgba(0, 0, 0, $alpha: 0.1);
+}

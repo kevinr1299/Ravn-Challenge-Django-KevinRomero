@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from 'src/app/interfaces/people';
 import { CatalogueService } from 'src/app/services/catalogue.service';
@@ -12,6 +12,8 @@ export class PersonCellComponent {
 
   @Input()
   person!: Person;
+  @Input()
+  selected: Boolean = false;
   specie = new Observable<string>(observer => {
     this.catalogueService.getCatalogue(this.person.specie).subscribe(
       data => {
