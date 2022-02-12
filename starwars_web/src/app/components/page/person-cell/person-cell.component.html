@@ -1,0 +1,12 @@
+<div fxLayout="column" class="site_list_item" fxFlexFill routerLink="/person">
+    <div fxLayout="row" fxFlexFill>
+        <div class="side_name" fxLayout="column">
+            <h2>{{person.name}}</h2>
+            <p class="low_emphasis">{{specie | async}} from {{world | async}}</p>
+        </div>
+        <div class="side_icon" fxLayout="column">
+            <mat-icon class="title_icon">arrow_forward_ios</mat-icon>
+        </div>
+    </div>
+    <mat-divider class="side_divider"></mat-divider>
+</div>

@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderBarComponent } from './components/template/header-bar/header-bar.component';
 import { SideBarComponent } from './components/template/side-bar/side-bar.component';
 import { PersonComponent } from './components/page/person/person.component';
+import { PersonCellComponent } from './components/page/person-cell/person-cell.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PersonComponent } from './components/page/person/person.component';
     HeaderBarComponent,
     SideBarComponent,
     PersonComponent,
+    PersonCellComponent,
   ],
   imports: [
     BrowserModule,
