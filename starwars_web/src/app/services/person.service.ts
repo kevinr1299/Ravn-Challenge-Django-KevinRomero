@@ -14,9 +14,9 @@ export class PersonService {
 
   constructor(private http: HttpClient) { }
 
-  getPeople(): Observable<HttpResponse<People>>{
+  getPeople(page: number = 1): Observable<HttpResponse<People>>{
     return this.http.get<People>(
-      this.personURL, {observe: 'response'}
+      `${this.personURL}?page=${page}`, {observe: 'response'}
     );
   }
 }
