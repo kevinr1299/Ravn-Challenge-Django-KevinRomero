@@ -20,6 +20,13 @@ def bulk_create_effect(model: Model, table_name: str, n_records: int):
     ]
 
 
+def bulk_define_list(records: list):
+    print(records)
+    for model in records:
+        print(model)
+        model.save()
+
+
 class TestSeedCommand(TestCase):
 
     def test_command_execution(self):
@@ -28,7 +35,12 @@ class TestSeedCommand(TestCase):
             'starwars.utils.models.CatalogueManager.seed_random',
             side_effect=bulk_create_effect,
         ):
-            call_command('seedpeople', 20, stdout=out)
+            with patch(
+                'starwars.people.management.commands'
+                '.seedpeople.Command._create_genders',
+                side_effect=bulk_define_list,
+            ):
+                call_command('seedpeople', 20, stdout=out)
         self.assertIn(
             'The database has been filled in successfully',
             out.getvalue(),

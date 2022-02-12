@@ -33,6 +33,9 @@ class Command(BaseCommand):
     max_name = 'n'
     help = 'Create fake record to catalogues and people table'
 
+    def _create_genders(gender_list: list) -> None:
+        Gender.objects.bulk_create(gender_list)
+
     def add_arguments(self, parser: CommandParser) -> None:
         parser.add_argument(
             self.max_name,
@@ -45,21 +48,18 @@ class Command(BaseCommand):
 
         with transaction.atomic():
             try:
-                gender_list = [
-                    Gender.objects.create(
-                        name='Male',
-                    ),
-                    Gender.objects.create(
-                        name='Female',
-                    ),
-                    Gender.objects.create(
-                        name='Non binary',
-                    ),
-                ]
-            except IntegrityError as e:
-                raise CommandError(
-                    'The genders have already been saving'
-                ) from e
+                if Gender.objects.count() == 0:
+                    self._create_genders([
+                        Gender(
+                            name='Male',
+                        ),
+                        Gender(
+                            name='Female',
+                        ),
+                        Gender(
+                            name='Non binary',
+                        ),
+                    ])
             except ProgrammingError as e:
                 raise CommandError(
                     'Database issue: '
@@ -129,9 +129,7 @@ class Command(BaseCommand):
                     specie=specie_list[random.randrange(
                         max_record,
                     )],
-                    gender=gender_list[random.randrange(
-                        len(gender_list),
-                    )],
+                    gender=Gender.objects.order_by('?').first(),
                 )
 
                 person.vehicles.add(vehicle_list[random.randrange(
