@@ -12,6 +12,7 @@ import { HeaderBarComponent } from './components/template/header-bar/header-bar.
 import { SideBarComponent } from './components/template/side-bar/side-bar.component';
 import { PersonComponent } from './components/person/person-info/person.component';
 import { PersonCellComponent } from './components/person/person-cell/person-cell.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PersonCellComponent } from './components/person/person-cell/person-cell
     SideBarComponent,
     PersonComponent,
     PersonCellComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
