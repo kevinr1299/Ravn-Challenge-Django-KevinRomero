@@ -7,7 +7,6 @@ from django.core.management.base import (
 )
 from django.db import (
     transaction,
-    IntegrityError,
     ProgrammingError,
 )
 from faker import Faker
@@ -33,7 +32,7 @@ class Command(BaseCommand):
     max_name = 'n'
     help = 'Create fake record to catalogues and people table'
 
-    def _create_genders(gender_list: list) -> None:
+    def _create_genders(self, gender_list: list) -> None:
         Gender.objects.bulk_create(gender_list)
 
     def add_arguments(self, parser: CommandParser) -> None:
