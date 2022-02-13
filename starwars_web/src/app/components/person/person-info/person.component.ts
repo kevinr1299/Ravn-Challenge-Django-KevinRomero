@@ -18,13 +18,11 @@ export class PersonComponent implements OnInit {
   constructor(
     private personService: PersonService,
     private catalogueService: CatalogueService,
-    private router: Router,
   ) { }
 
   ngOnInit(): void {
     this.personService.getCurrentPerson().subscribe({
       next: person => {
-        if (person == null) this.router.navigate(['']);
         this.person = person
         this.vehicles = [];
         person?.vehicles.forEach(vehicle => {
@@ -33,7 +31,6 @@ export class PersonComponent implements OnInit {
           })
         })
       },
-      error: () => this.router.navigate(['']),
     })
   }
 }
