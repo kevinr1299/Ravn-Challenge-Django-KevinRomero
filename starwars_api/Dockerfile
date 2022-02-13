@@ -14,4 +14,4 @@ COPY . .
 
 RUN pip install -e .
 
-CMD ["gunicorn", "--bind=0.0.0.0:8000", "starwars.wsgi"]
+CMD ["gunicorn", "--bind=0.0.0.0:8000", "--timeout", "50", "starwars.wsgi", "--workers", "4"]
