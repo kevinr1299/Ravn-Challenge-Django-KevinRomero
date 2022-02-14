@@ -14,7 +14,7 @@ List of technologies used to develop the project:
 * NodeJS version: 16.14
 * Angular version: 13.2
 
-![Documentation](README_images/admin.png)
+![Documentation](README_images/documentation.png)
 
 ![Admin](README_images/admin.png)
 
