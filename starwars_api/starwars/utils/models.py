@@ -1,5 +1,5 @@
 from django.core.management.base import CommandError
-from django.db import IntegrityError
+from django.db import IntegrityError, ProgrammingError
 from django.db.models import Model
 from faker import Faker
 
@@ -33,4 +33,9 @@ class CatalogueManager:
             raise CommandError(
                 'Bad luck, Faker repeated the value when creating '
                 f'{table_name} records',
+            ) from e
+        except ProgrammingError as e:
+            raise CommandError(
+                'Database issue: '
+                'execute the migrations',
             ) from e

@@ -3,57 +3,16 @@ from faker import Faker
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from starwars.people.models.catalogues import (
-    EyeColor,
-    Gender,
-    HairColor,
-    SkinColor,
-    Specie,
-    World,
-)
-from starwars.people.models.person import Person
 from starwars.people.serializers.person import PersonSerializer
+from starwars.people.tests.utils import PeopleTestUtils
 
 fake = Faker()
-
-
-def set_record_on_catalogues(test: APITestCase) -> None:
-    test.eye_color = EyeColor.objects.create(
-        name=fake.color_name(),
-    )
-    test.gender = Gender.objects.create(
-        name=fake.pystr(max_chars=10),
-    )
-    test.hair_color = HairColor.objects.create(
-        name=fake.color_name(),
-    )
-    test.skin_color = SkinColor.objects.create(
-        name=fake.color_name(),
-    )
-    test.specie = Specie.objects.create(
-        name=fake.pystr(max_chars=10),
-    )
-    test.world = World.objects.create(
-        name=fake.pystr(max_chars=10),
-    )
 
 
 class TestPeopleModel(APITestCase):
 
     def setUp(self):
-        set_record_on_catalogues(test=self)
-        self.person = Person.objects.create(
-            name=fake.first_name(),
-            height=fake.pyfloat(min_value=0),
-            mass=fake.pyfloat(min_value=0),
-            birth_date=fake.date(),
-            eye_color=self.eye_color,
-            hair_color=self.hair_color,
-            skin_color=self.skin_color,
-            gender=self.gender,
-            homeworld=self.world,
-        )
-        self.person.species.add(self.specie)
+        PeopleTestUtils.set_people_record(test=self)
 
     def test_set_creation_date(self):
         self.assertIsNotNone(
@@ -95,11 +54,11 @@ class TestPeopleModel(APITestCase):
                 'pk': self.world.id
             })
         )
-        self.assertIn(
+        self.assertEqual(
             reverse('catalogues:specie', kwargs={
                 'pk': self.specie.id,
             }),
-            serializer.data['species'],
+            serializer.data['specie'],
         )
 
     def test_retrieve_person(self):

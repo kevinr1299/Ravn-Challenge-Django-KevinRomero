@@ -1,0 +1,10 @@
+@use '../../../../colors.scss' as colors;
+
+.header {
+    background-color: colors.$ravn_black;
+    font-size: 17pt;
+    color: white;
+}
+.header span {
+    cursor: pointer;
+}

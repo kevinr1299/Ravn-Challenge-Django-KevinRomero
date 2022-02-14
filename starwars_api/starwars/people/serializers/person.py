@@ -14,8 +14,7 @@ class PersonSerializer(serializers.ModelSerializer):
         read_only=True,
         view_name='catalogues:world',
     )
-    species = serializers.HyperlinkedRelatedField(
-        many=True,
+    specie = serializers.HyperlinkedRelatedField(
         read_only=True,
         view_name='catalogues:specie',
     )
@@ -48,7 +47,7 @@ class PersonSerializer(serializers.ModelSerializer):
             'eye_color',
             'gender',
             'homeworld',
-            'species',
+            'specie',
             'vehicles',
             'films',
             'url',
