@@ -155,3 +155,14 @@ If you change the port of front-end execution, you might stop the execution of t
 ## Alerts
 * If you change the DEBUG value on `starwars_api/.env` the documentation and the admin will fail that occurs because Django can't serve the static files, to do this, need to [configure](https://docs.djangoproject.com/en/4.0/howto/static-files/deployment/#serving-the-site-and-your-static-files-from-the-same-server) the webserver like Apache or Nginx to serve the files with the STATIC_ROOT
 
+## Aditional
+To run the test, you need to go to starwars_api directory and execute
+`pipenv install --dev`, after you can access the venv and run the command.
+```bash
+pytest --cov
+```
+To do with docker are these steps:
+```bash
+docker-compose run web pipenv install --dev --system
+docker-compose run web pytest --cov
+```
