@@ -1,7 +1,7 @@
 StarWars Challenge | RAVN
 =============================
 
-StarWars Challenge consists of a RESTfull API where you can request the paginated character's information, the Django admin where you can save, edit or delete information, and a web client where you can request the characters to the API.
+StarWars Challenge consists of a RESTfull API where you request the paginated character's information, the Django admin where you can save, edit or delete it, and a web client where you can request the characters at API.
 
 ## Technologies
 List of technologies used to develop the project:
@@ -30,7 +30,7 @@ After, you need to install [pipenv](https://pipenv.pypa.io/en/latest/install/) t
 Also, you will need to install [postgresql](https://www.postgresql.org/download/)
 
 ### Preparation to Run Front-End
-You will need to install [node](https://nodejs.org/en/download/). To check the installation, run `node --version` on terminal
+You will need to install [node](https://nodejs.org/en/download/). To check the installation, run `node --version` on the terminal.
 
 ## Run Locally
 
@@ -76,12 +76,12 @@ Run migrations
 python manage.py migrate
 ```
 
-Run command to collect the static file, this is optional, but if you don't execute, when running the server this can return a warning log
+Run command to collect the static file, this is optional, but if you don't execute, when running the server, this can return a warning log
 ```bash
 python manage.py collectstatic --noinput
 ```
 
-Run seeder command, to execute the command you might change n with an int
+To execute the seeder command, you must change n with an int
 ```bash
 python manage.py seedpeople n
 ```
@@ -101,7 +101,7 @@ gunicorn --timeout 50 starwars.wsgi --workers 4
 ```
 
 #### Run With Docker
-Start the containers
+Start the containers. It can take several minutes to download the base images and python packages. Another consideration is when the web container is starting shows a traceback because did not find the redoc script that's normal and doesn't stop the initialization 
 ```bash
 docker-compose up
 ```
@@ -133,13 +133,13 @@ Start the server
 npm run start
 ```
 
-If you change the port of front-end execution, you might stop the execution of the back-end containers and edit the `.env` file on `starwars_api` and edit the ALLOWED_ORIGINS attribute. After you might execute `docker-compose up` again.
+If you change the port of front-end execution, you might stop the running of the back-end containers and edit the `.env` file on `starwars_api` and edit the ALLOWED_ORIGINS attribute. After you might execute `docker-compose up` again.
 
 ## Assumptions
 * The birth_date can't be greater than today
 * The person has one specie only
 * The film select the characters on its creation
-* When reloading the page the person selected returns to null
+* When reloading the page lost the person selected that returns to null
 
 
 ## Alerts
