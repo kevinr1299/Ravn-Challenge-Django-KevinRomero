@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-RUN apt-get update && apt-get install gcc -y && apt-get clean
+RUN apt-get update && apt-get install gcc -y && apt install -y build-essential libpq-dev
 
 RUN pip install --upgrade pip
 RUN pip install pipenv

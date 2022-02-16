@@ -9,9 +9,9 @@ djangorestframework = "*"
 drf-yasg = "*"
 django-cors-headers = "*"
 gunicorn = "*"
-psycopg2-binary = "*"
 whitenoise = "*"
 faker = "*"
+psycopg2 = "*"
 
 [dev-packages]
 flake8 = "*"

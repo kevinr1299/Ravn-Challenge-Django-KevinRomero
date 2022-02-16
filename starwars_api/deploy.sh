@@ -1,7 +1,7 @@
 #!/bin/bash
 
 until python manage.py migrate; do
-  echo "Postgres is unavailable - sleeping"
+  >&2 echo "Postgres is unavailable - sleeping"
   sleep 1
 done
 
