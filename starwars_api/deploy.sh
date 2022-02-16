@@ -1,10 +1,9 @@
 #!/bin/bash
 until python manage.py migrate 2>/dev/null; do
-  >&2 echo "Postgres is unavailable - sleeping"
-  sleep 1
+  echo 'Postgres is unavailable - sleeping' && sleep 1
 done
 
-echo "success"
+echo 'success'
 
 python manage.py collectstatic --noinput
 python manage.py seedpeople 20
