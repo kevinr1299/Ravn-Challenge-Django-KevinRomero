@@ -18,4 +18,4 @@ services:
       - .:/usr/src/app/starwars_api
     env_file:
       - .env
-    command: sh -c "dockerize -wait tcp://db:5432 -timeout 300s -wait-retry-interval 30s sh deploy.sh"
+    command: sh -c "dockerize -wait tcp://db:5432 -timeout 300s -wait-retry-interval 2s sh deploy.sh"
