@@ -3,7 +3,7 @@ services:
   db:
     image: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
@@ -13,10 +13,9 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
-      - .:/starwars
+      - .:/usr/src/app/starwars_api
     env_file:
       - .env
-    depends_on:
-      - db
+    command: ["sh", "./deploy.sh"]
