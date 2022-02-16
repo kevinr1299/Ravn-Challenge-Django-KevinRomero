@@ -51,15 +51,15 @@ Go to back-end project
 cd starwars_api
 ```
 
+#### Run Without Docker
+Before the following steps, you might do the [Preparing to run back-end without docker](#preparing-to-run-back-end-without-docker) section.
+
 Create `.env` file
 ```bash
 cp .env.example .env
 ```
 
-Edit the `.env` file to change SECRET_KEY, DB_NAME, DB_USER, DB_PASS. If you would like to use `docker-compose`, don't change the DB_HOST attribute. if you have already installed python, you can get a key executing `python gen_key.py`
-
-#### Run Without Docker
-Before the following steps, you might do the [Preparing to run back-end without docker](#preparing-to-run-back-end-without-docker) section.
+Edit the `.env` file to change SECRET_KEY, DB_NAME, DB_USER, and DB_PASS. If you would like to use `docker-compose`, don't change the DB_HOST attribute. if you have already installed python, you can get a key executing `python gen_key.py`
 
 Install dependencies
 ```bash
@@ -106,24 +106,14 @@ Start the containers
 docker-compose up
 ```
 
-Execute the migrations
-```bash
-docker-compose run web python manage.py migrate
-```
-
-Run command to collect the static file, this is optional, but if you don't execute, when running the server this can return a warning log
-```bash
-docker-compose run web python manage.py collectstatic --noinput
-```
-
-Seed records, to execute the command you might change n with an int
-```bash
-docker-compose run web python manage.py seedpeople n
-```
-
 Create the super user
 ```bash
 docker-compose run web python manage.py createsuperuser
+```
+
+Default the initialization insert 20 records to add more you can execute the command. You must change the n with an int value.
+```bash
+docker-compose run web python manage.py seedpeople n
 ```
 
 ### Run Front-End
